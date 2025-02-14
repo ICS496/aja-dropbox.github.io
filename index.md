@@ -6,6 +6,7 @@
 * [Developer Guide](#developer-guide)
 * [Development History](#development-history)
 * [Links](#links)
+* [Project Milestones](#project-milestones)
 * [Team](#team)
 
 ## Overview
