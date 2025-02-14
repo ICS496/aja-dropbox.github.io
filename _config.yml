@@ -1,5 +1,5 @@
-title: Kalo Stems
-description: An app that connects UH students to Companies 
+title: Automated Dropbox Uploader
+description: An app that automates Dropbox file uploads (for internal use from the UH Engineering Business Office only)
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-slate
