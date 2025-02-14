@@ -60,5 +60,28 @@ Kalo Stems uses [Github Actions](https://docs.github.com/en/free-pro-team@latest
 ## Links
 * [GitHub Organization](https://github.com/ICS496/aja-dropbox.github.io)
 
+## Project Milestones
+
+### 1/23:
+* initial meeting with sponsors
+
+### 1/24-1/30:
+* discussed scope of project
+* set up Github page
+* looked into dropbox file upload automating
+* created rough pitch (outline) for sponsors
+
+### 1/31-2/6:
+* finalized project scope
+* continued editing Github page
+* read Dropbox API docs
+* request Enterprise Dropbox Access (denied)
+* create (trial) business Dropbox account
+
+### 2/7-2/13:
+* created Github website, aka this current page!
+* continued reading Dropbox API docs (differences between regular and enterprise/business API?)
+* started [Dropbox tutorial for Python](https://www.dropbox.com/developers/documentation/python#tutorial), installed dropbox package for Python, generated access token (will need to update to [standard OAuth flow](https://developers.dropbox.com/oauth-guide) in the future, however)
+
 ## Team
 AJA Dropbox Tool is designed and implemented by [Aaron Ancheta](https://aaron-ancheta.github.io/), [Adrienne Kaneshiro](https://amkanesh.github.io/), and [Jaira Pader](https://jairabp.github.io/).
