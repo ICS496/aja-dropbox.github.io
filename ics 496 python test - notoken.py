@@ -58,15 +58,14 @@ def main():
     # testing access calls
     #print(dbx.users_get_current_account())
 
-    for entry in dbx.files_list_folder('').entries:
-        print(entry.name)
+    #for entry in dbx.files_list_folder('').entries:
+    #    print(entry.name)
 
     
 
     # walks thru all the files and uploads them
-    #TODO: actually sort them by name and shit
-    #TODO: remove y/n it's annoying me
-    # wait . did i do it. i think it keeps folders in dropbox if they're already in there??? so now all i have to worry about is the regex? ok
+    #TODO: actually sort them by name
+    #TODO: remove some of the y/n prompts
     # First do all the files.
     for dn, dirs, files in os.walk(rootdir):
         subfolder = dn[len(rootdir):].strip(os.path.sep)
