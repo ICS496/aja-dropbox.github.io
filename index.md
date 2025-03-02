@@ -83,7 +83,22 @@ Kalo Stems uses [Github Actions](https://docs.github.com/en/free-pro-team@latest
 * created Github website, aka this current page!
 * continued reading Dropbox API docs (differences between regular and enterprise/business API?)
 * started [Dropbox tutorial for Python](https://www.dropbox.com/developers/documentation/python#tutorial), installed dropbox package for Python, generated access token (will need to update to [standard OAuth flow](https://developers.dropbox.com/oauth-guide) in the future, however)
-* Amkanesh created Dropbox Testing App, unfortunately not possible to add other devs so only owned/managed by a single person
+* created Dropbox Testing App, unfortunately not possible to add other devs so only owned/managed by a single person
+
+### 2/14-2/20:
+* timeline chart for sponsor (usable demo by 3/7)
+* setup dropbox for individual environments
+* implemented file uploading to dropbox from desktop
+* research account authentication (i.e. how dropbox gets access to an account via oauth)
+
+### 2/21-2/27:
+* looked into how others can access Dropbox app
+* looked into OAuth implementation (app_key, app_secret)
+* work on functionality to upload people's files into their corresponding named folders (as of this week it just mirrors your local directory's hierarchy)
+
+### 2/28-3/6:
+* work on Dropbox folder uploading
+  
   
 ## Team
 AJA Dropbox Tool is designed and implemented by [Aaron Ancheta](https://aaron-ancheta.github.io/), [Adrienne Kaneshiro](https://amkanesh.github.io/), and [Jaira Pader](https://jairabp.github.io/).
