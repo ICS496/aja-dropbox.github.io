@@ -60,6 +60,12 @@ AJA Dropbox uses [Github Actions](https://docs.github.com/en/free-pro-team@lates
 ## Links
 * [GitHub Organization](https://github.com/ICS496/aja-dropbox.github.io)
 
+## Current Functionality
+* file uploading
+    * compares stats of file on local machine and in dropbox cloud, only re-uploads if metadata is changed
+    * currently mirrors local directory's hierarchy when uploading
+* OAuth account verification
+
 ## Project Milestones
 
 ### 1/23:
