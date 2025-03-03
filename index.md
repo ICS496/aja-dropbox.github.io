@@ -10,8 +10,7 @@
 * [Team](#team)
 
 ## Overview
-
-**(add desc)**
+This script automates synchronizing files from a local directory to numerous Dropbox folders. It authenticates with Dropbox using OAuth2 (prompting the user for an authorization code). Then it determines the local source directory and the Dropbox folder using command-line parameters. The script recursively traverses the local files, checks for changes or new files (skipping temporary or hidden files), and uploads or refreshes files on Dropbox as needed. It also provides interactive prompts and performance timing for key operations.
 
 * [Meteor](https://www.meteor.com/) for Javascript-based implementation of client and server code.
 * [React](https://react.dev/) for component-based UI implementation and routing.
