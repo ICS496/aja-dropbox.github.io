@@ -38,7 +38,7 @@ This section provides information of interest to Meteor developers wishing to us
 **(to add)**
 
 ### Application Design
-AJA Dropbox is based upon the features our client would like to have. The main goal is to have a program that rarely needs maintenance as they possess no coding knowledge. We are developing a website that would allow the user to maintain the program script itself by creating features that will change the script when neccessary changes are needed. 
+AJA Dropbox is based upon the features our client would like to have. The main goal is to have a program that rarely needs maintenance as they possess no coding knowledge. We are developing an application that would allow the user to maintain the program script itself by creating features that will change the script when neccessary changes are needed. 
 
 ### Data Model
 This is our prototype Data Model in which we hope to base our collections off of. This is a design choice that we are currently working in progress.
