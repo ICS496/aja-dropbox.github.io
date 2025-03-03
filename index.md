@@ -103,6 +103,7 @@ AJA Dropbox uses [Github Actions](https://docs.github.com/en/free-pro-team@lates
 
 ### 2/28-3/6:
 * work on Dropbox folder uploading
+* combined OAuth and file upload functionality
   
   
 ## Team
