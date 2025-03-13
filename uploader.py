@@ -14,7 +14,7 @@ from establishConnection import oauth
 #load_dotenv()
 
 #TOKEN = os.getenv("TOKEN")
-TOKEN = ''
+TOKEN = 'ngfnfgns'
 
 # for cmd use only
 parser = argparse.ArgumentParser(description='Sync ~/Documents/ICS496_test to Dropbox')
@@ -64,20 +64,16 @@ def main():
 
     for entry in dbx.files_list_folder('').entries:
         print(entry.name)
-
     
 
     # walks thru all the files and uploads them
-    #TODO: actually sort them by name and shit
-    #TODO: remove y/n it's annoying me
-    # wait . did i do it. i think it keeps folders in dropbox if they're already in there??? so now all i have to worry about is the regex? ok
     # First do all the files.
     for dn, dirs, files in os.walk(rootdir):
         subfolder = dn[len(rootdir):].strip(os.path.sep)
         listing = list_folder(dbx, folder, subfolder)
         print('Descending into', subfolder, '...')
 
-        # First do all the files.
+        # First do all the files. (root folder)
         for name in files:
             fullname = os.path.join(dn, name)
             if not isinstance(name, six.text_type):
@@ -89,7 +85,8 @@ def main():
                 print('Skipping temporary file:', name)
             elif name.endswith('.pyc') or name.endswith('.pyo'):
                 print('Skipping generated file:', name)
-            # actual meat of the code here
+            
+            # checks if file already exists on dbx
             elif nname in listing:
                 md = listing[nname]
                 mtime = os.path.getmtime(fullname)
@@ -107,15 +104,24 @@ def main():
                         print(name, 'is already synced [content match]')
                     else:
                         print(name, 'has changed since last sync')
-                        if yesno('Refresh %s' % name, False, args):
-                            upload(dbx, fullname, folder, subfolder, name,
-                                   overwrite=True)
+                        #if yesno('Refresh %s' % name, False, args):
+                        # probably check for the correct subfolder here
+
+                        upload(dbx, fullname, folder, subfolder, name,
+                                overwrite=True)
             #elif yesno('Upload %s' % name, True, args):
-            # TODO: check if folder already exists in dropbox, otherwise create one. for now assuming it exists
+
+            # check also if file name matches folder name; if not, find correct folder on dbx
             else:
                 if match_format(fullname):
+                    if check_folder_name(fullname):
+                        # proceed as normal if file is under its designated subfolder on desktop
+                        upload(dbx, fullname, folder, subfolder, name)
+                    else:
+                        # otherwise, find correct folder
+                        new_subfolder = determine_dbx_subfolder(fullname)
+                        upload(dbx, fullname, folder, new_subfolder, name)
 
-                    upload(dbx, fullname, folder, subfolder, name)
                 else:
                     print (name, ' is unable to be uploaded because it does not match the specified naming format.')
 
@@ -128,11 +134,14 @@ def main():
                 print('Skipping temporary directory:', name)
             elif name == '__pycache__':
                 print('Skipping generated directory:', name)
-            elif yesno('Descend into %s' % name, True, args): # will maybe null this later
+            else:
                 print('Keeping directory:', name)
                 keep.append(name)
-            else:
-                print('OK, skipping directory:', name)
+            #elif yesno('Descend into %s' % name, True, args): # will maybe null this later
+            #    print('Keeping directory:', name)
+            #    keep.append(name)
+            #else:
+            #    print('OK, skipping directory:', name)
         dirs[:] = keep
 
 
@@ -151,18 +160,46 @@ def match_format(filepath):
     # if it only appears once, splits off the file extension and just deals with the filename
     filename = filename.split(".")[0]
 
-    r = re.compile(".*_.*") # any string, underscore, then any string
+    r = re.compile(".*_.*-.*") # any string, underscore, then any string, then a dash, then any string
     if r.match(filename):
         return True
     else:
         return False
 
+# checks if the file name matches its folder name
+def check_folder_name(fullname):
+    #print("Checking folder name correctness:")
 
+    # separate into folder and filename
+    temp = fullname.split("\\")
+    filename = temp[len(temp) - 1] # gets the last item
+    folder = temp[len(temp) - 2] # item before the filename is the folder
 
-def determine_dbx_folder():
+    # should have already checked to see if filename matches format, so good on that front
+    # two names separated by underscores, then a dash, then the filename (like taxform or whatever) 
+    # so three elements of the full file name
 
+    # so... basically get everything before the dash (the name) to see if it matches
+    temp2 = filename.split("-")
+    fileowner = temp2[0]
 
-    return False
+    # made lower to just make it easier... so any form of the name (as long as it's spelled right) will work
+    if fileowner.lower() != folder.lower():
+        return False
+    return True
+
+# gets the path to the folder the file will go in
+# upload function already deals with making a new folder so it's just a matter of changing the subfolder name
+# (folder arg in dbx is the root folder, Test)
+def determine_dbx_subfolder(fullname):
+    print("Folder and file names don't match, determining correct subfolder...")
+    temp = fullname.split("\\")
+    filename = temp[len(temp) - 1] # first gets the file name...
+    folder = filename.split("-")[0] # then gets just the person's name from the filename
+    # capitalizes the first letters of the names just in case
+    folder = folder.title()
+    print("Moving " + filename + " to Dropbox subfolder " + folder + "...")
+    return folder
 
 # Lists a folder
 def list_folder(dbx, folder, subfolder):
@@ -207,6 +244,7 @@ def download(dbx, folder, subfolder, name):
     return data
 
 # Uploads a file
+# notably, limited to files under 150 MB
 def upload(dbx, fullname, folder, subfolder, name, overwrite=False):
     """Upload a file.
 
