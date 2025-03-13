@@ -14,7 +14,7 @@ from establishConnection import oauth
 #load_dotenv()
 
 #TOKEN = os.getenv("TOKEN")
-TOKEN = 'ngfnfgns'
+TOKEN = 'asdkjg'
 
 # for cmd use only
 parser = argparse.ArgumentParser(description='Sync ~/Documents/ICS496_test to Dropbox')
