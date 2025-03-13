@@ -38,7 +38,7 @@ The landing page is presented to users when they visit the top-level URL to the 
 ## Developer Guide
 This section provides information of interest to developers wishing to use this code base as a basis for their own development tasks.
 
-This application uses the Dropbox for Python API.
+This application uses the [Dropbox for Python API.](https://dropbox-sdk-python.readthedocs.io/en/latest/index.html)
 
 ### Installation
 **(to add)**
