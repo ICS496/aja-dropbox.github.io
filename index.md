@@ -31,8 +31,14 @@ The landing page is presented to users when they visit the top-level URL to the 
 
 *We intend to enhance the UI design over the course of our project.*
 
+### Usage Notes
+* Individual file upload limit is **150 MB**.
+* Application can move misplaced files to their correct Dropbox folders (for example, misplacing Smith_Amanda-document.txt in folder Lee_Bruce) and create new folders if necessary--HOWEVER, new folders do not have sharing permissions. User needs to manually give the intended recipent access to the newly created folder on Dropbox.
+
 ## Developer Guide
-This section provides information of interest to Meteor developers wishing to use this code base as a basis for their own development tasks.
+This section provides information of interest to developers wishing to use this code base as a basis for their own development tasks.
+
+This application uses the Dropbox for Python API.
 
 ### Installation
 **(to add)**
