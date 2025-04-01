@@ -8,12 +8,9 @@ import contextlib
 import unicodedata
 import argparse
 import re
-from dotenv import load_dotenv
+
 from establishConnection import oauth
 
-#load_dotenv()
-
-#TOKEN = os.getenv("TOKEN")
 TOKEN = 'asdkjg'
 
 # for cmd use only
@@ -120,7 +117,22 @@ def main():
                     else:
                         # otherwise, find correct folder
                         new_subfolder = determine_dbx_subfolder(fullname)
-                        upload(dbx, fullname, folder, new_subfolder, name)
+                        listing = list_folder(dbx, folder, new_subfolder)
+
+                        # Recheck for existence in the new subfolder
+                        if name in listing:
+                            md = listing[name]
+                            mtime = os.path.getmtime(fullname)
+                            mtime_dt = datetime.datetime(*time.gmtime(mtime)[:6])
+                            size = os.path.getsize(fullname)
+                            if (isinstance(md, dropbox.files.FileMetadata) and
+                                    mtime_dt == md.client_modified and size == md.size):
+                                print(name, 'is already synced [stats match]')
+                            else:
+                                print(name, 'exists in correct subfolder with different stats, re-uploading...')
+                                upload(dbx, fullname, folder, new_subfolder, name, overwrite=True)
+                        else:
+                            upload(dbx, fullname, folder, new_subfolder, name)
 
                 else:
                     print (name, ' is unable to be uploaded because it does not match the specified naming format.')
