@@ -114,6 +114,11 @@ AJA Dropbox uses [Github Actions](https://docs.github.com/en/free-pro-team@lates
 ### 3/7-3/13:
 * demo reveal
 * fix minor debugs
+
+### 3/28-4/3:
+finalize framework used for GUI
+start documentation for user guide
+
   
   
 ## Team
