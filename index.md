@@ -22,20 +22,48 @@ View our website application here: **TO ADD**
 [![ci-AJA_Dropbox](https://github.com/kalo-stems/kalo-kode/actions/workflows/ci.yml/badge.svg)](https://github.com/kalo-stems/kalo-kode/actions/workflows/ci.yml)
 
 ## Installation
-Before using AJA Dropbox, a few other things need to be installed beforehand.
+Before using AJA Dropbox, a few other things need to be installed beforehand. These instructions are specific to Windows machines... for now (will update with ios too maybe?)
 
 1. Make sure Python is installed on your machine. To do this, open a new Command Prompt window and type `python`, then `Enter` to check your Python version.
    * If already installed, the Python version number should appear. Press `Ctrl-Z` then `Enter` to the right of the >>> to exit from putting any more input into Python.
-   * Otherwise, you will have to install Python yourself. Navigate to **Microsoft Store** from the **Start** menu, and search for Python in the apps. Install the latest version.
+   * Otherwise, you will have to install Python yourself.
+      * **For Windows:** Navigate to **Microsoft Store** from the **Start** menu, and search for Python in the apps. Install the latest version.
+      * **For mac:** (TO ADD)
       * After installation, make sure Python is properly installed by repeating step 1. 
 2. There are a few packages we need to install, as well. In terminal, run these three commands separately:
    * `pip install dotenv`
    * `pip install dropbox`
    * `pip install PySide6`
 
+Great! AJA Dropbox needs these packages to create its GUI and access the Dropbox API. Now that we've got all the necessary things installed, we can go ahead and download AJA Dropbox itself.
+
+3. **are we just having the user download from a specified branch?** In the AJA Github page, navigate to the latest branch. (link to branch here?) Under the green code button in the top right, click `Download ZIP` to download all the files.
+4. After downloading, unzip the files to wherever you'd like.
+
+And you're done!
 
 ## User Guide
-This section provides a walkthrough of the AJA Dropbox user interface and its capabilities.
+This section provides a walkthrough of how to use the AJA Dropbox user interface and its capabilities.
+
+### How to Run the App
+AJA Dropbox is able to be run via the command terminal or through an IDE (a code editor, like VSCode).
+
+#### If using a code editor:
+In this method, we can simply run the main app file from your IDE.
+1. Navigate to the AJA Dropbox folder you've unzipped on your machine.
+2. Double click the folder to show its contents. Open the file named `mvp_v1`. If you have an IDE installed, it should automatically open in the IDE.
+3. Locate the **Run** button to run the program.
+   
+#### If using command line:
+Here, we'll have to navigate to the app's folder with the terminal and run it from there.
+1. Take note of the location of your app folder. The path is usually located at the top of the File Explorer window. For example, it may be something like `Downloads\aja-dropbox.github.io-main_app_0.4\aja-dropbox.github.io-main_app_0.4`
+2. Open a new command terminal window. To the left of the cursor, it should read something like `C:\Users\(Your Username Here)`. This is the current directory.
+3. We need to navigate to the AJA Dropbox folder we installed. To do this, we're going to be using two commands:
+  * `cd`: navigates to a specified folder
+  * `dir`: lists the contents of a specified folder
+
+(TO ADD)
+
 
 ### Landing Page
 The landing page is presented to users when they visit the top-level URL to the site. It provides our motto and some previews of our application.
@@ -45,6 +73,7 @@ The landing page is presented to users when they visit the top-level URL to the 
 ### Usage Notes
 * Individual file upload limit is **150 MB**.
 * Application can move misplaced files to their correct Dropbox folders (for example, misplacing Smith_Amanda-document.txt in folder Lee_Bruce) and create new folders if necessary--HOWEVER, new folders do not have sharing permissions. User needs to manually give the intended recipent access to the newly created folder on Dropbox.
+* Application will also overwrite files of the same name if they're already present in the target Dropbox folder or subfolders within that folder.
 
 ## Developer Guide
 This section provides information of interest to developers wishing to use this code base as a basis for their own development tasks.
