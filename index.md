@@ -2,6 +2,7 @@
 
 * [Overview](#overview)
 * [Deployment](#deployment)
+* [Installation](#installation)
 * [User Guide](#user-guide)
 * [Developer Guide](#developer-guide)
 * [Development History](#development-history)
@@ -12,16 +13,26 @@
 ## Overview
 This script automates synchronizing files from a local directory to numerous Dropbox folders. It authenticates with Dropbox using OAuth2 (prompting the user for an authorization code). Then it determines the local source directory and the Dropbox folder using command-line parameters. The script recursively traverses the local files, checks for changes or new files (skipping temporary or hidden files), and uploads or refreshes files on Dropbox as needed. It also provides interactive prompts and performance timing for key operations.
 
-* [Meteor](https://www.meteor.com/) for Javascript-based implementation of client and server code.
-* [React](https://react.dev/) for component-based UI implementation and routing.
-* [React](https://react-bootstrap.github.io/) Bootstrap CSS Framework for UI design.
-* [Uniforms](https://uniforms.tools/) for React and Semantic UI-based form design and display.
+* [Qt for Python/PySide](https://wiki.qt.io/Qt_for_Python) for GUI capabilities
 
 ## Deployment
 View our website application here: **TO ADD**
 
 ## Activity Badges
 [![ci-AJA_Dropbox](https://github.com/kalo-stems/kalo-kode/actions/workflows/ci.yml/badge.svg)](https://github.com/kalo-stems/kalo-kode/actions/workflows/ci.yml)
+
+## Installation
+Before using AJA Dropbox, a few other things need to be installed beforehand.
+
+1. Make sure Python is installed on your machine. To do this, open a new Command Prompt window and type 'python', then 'Enter' to check your Python version.
+   * If already installed, the Python version number should appear. Press 'Ctrl-Z' then 'Enter' to the right of the >>> to exit from putting any more input into Python.
+   * Otherwise, you will have to install Python yourself. Navigate to **Microsoft Store** from the **Start** menu, and search for Python in the apps. Install the latest version.
+      * After installation, make sure Python is properly installed by repeating step 1. 
+2. There are a few packages we need to install, as well. In terminal, run these three commands separately:
+   * 'pip install dotenv'
+   * 'pip install dropbox'
+   * 'pip install PySide6'
+
 
 ## User Guide
 This section provides a walkthrough of the AJA Dropbox user interface and its capabilities.
