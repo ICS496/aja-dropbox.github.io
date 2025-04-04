@@ -22,7 +22,7 @@ View our website application here: **TO ADD**
 [![ci-AJA_Dropbox](https://github.com/kalo-stems/kalo-kode/actions/workflows/ci.yml/badge.svg)](https://github.com/kalo-stems/kalo-kode/actions/workflows/ci.yml)
 
 ## Installation
-Before using AJA Dropbox, a few other things need to be installed beforehand. These instructions are specific to Windows machines... for now (will update with ios too maybe?)
+Before using AJA Dropbox, a few other things need to be installed beforehand. These instructions are specific to Windows machines... for now (will update with mac too maybe?)
 
 1. Make sure Python is installed on your machine. To do this, open a new Command Prompt window and type `python`, then `Enter` to check your Python version.
    * If already installed, the Python version number should appear. Press `Ctrl-Z` then `Enter` to the right of the >>> to exit from putting any more input into Python.
