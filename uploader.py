@@ -11,153 +11,96 @@ import re
 
 from establishConnection import oauth
 
-TOKEN = 'asdkjg'
+#TOKEN = 'asdkjg'
 
-# for cmd use only
-parser = argparse.ArgumentParser(description='Sync ~/Documents/ICS496_test to Dropbox')
-parser.add_argument('folder', nargs='?', default='Test',
-                    help='Folder name in your Dropbox')
-parser.add_argument('rootdir', nargs='?', default='~\Documents\ICS496_testfiles',
-                    help='Local directory to upload')
-parser.add_argument('--token', default=TOKEN,
-                    help='Access token '
-                    '(see https://www.dropbox.com/developers/apps)')
-parser.add_argument('--yes', '-y', action='store_true',
-                    help='Answer yes to all questions')
-parser.add_argument('--no', '-n', action='store_true',
-                    help='Answer no to all questions')
-parser.add_argument('--default', '-d', action='store_true',
-                    help='Take default answer on all questions')
+# run_sync is the main function our GUI will call to start syncing
+def run_sync(dropbox_folder, local_path):
+    folder = dropbox_folder
+    rootdir = os.path.expanduser(local_path)  # expands ~ to full path if needed
 
-# main program begins here
-def main():
-    args = parser.parse_args() # for now, just takes cmd line arguments
-
-    # deals with correct cmd input
-    if sum([bool(b) for b in (args.yes, args.no, args.default)]) > 1:
-        print('At most one of --yes, --no, --default is allowed')
-        sys.exit(2)
-    if not args.token:
-        print('--token is mandatory')
-        sys.exit(2)
-
-    #storing variables from arg
-    folder = args.folder
-    rootdir = os.path.expanduser(args.rootdir)
-    print('Dropbox folder name:', folder)
-    print('Local directory:', rootdir)
+    # checks for path validity
     if not os.path.exists(rootdir):
-        print(rootdir, 'does not exist on your filesystem')
-        sys.exit(1)
+        raise Exception(f"{rootdir} does not exist on your filesystem.")
     elif not os.path.isdir(rootdir):
-        print(rootdir, 'is not a folder on your filesystem')
-        sys.exit(1)
+        raise Exception(f"{rootdir} is not a folder on your filesystem.")
 
-    #dbx = dropbox.Dropbox(args.token)
-    dbx = oauth()
+    dbx = oauth()  # triggers OAuth flow and returns authorized Dropbox instance
 
-    # testing access calls
-    #print(dbx.users_get_current_account())
-
-    for entry in dbx.files_list_folder('').entries:
-        print(entry.name)
-    
-
-    # walks thru all the files and uploads them
-    # First do all the files.
-    for dn, dirs, files in os.walk(rootdir):
-        subfolder = dn[len(rootdir):].strip(os.path.sep)
-        listing = list_folder(dbx, folder, subfolder)
+    for dn, dirs, files in os.walk(rootdir):  # recursively walk the local folder
+        subfolder = dn[len(rootdir):].strip(os.path.sep)  # determine relative path
+        listing = list_folder(dbx, folder, subfolder)  # list existing files in current Dropbox subfolder
         print('Descending into', subfolder, '...')
 
-        # First do all the files. (root folder)
         for name in files:
             fullname = os.path.join(dn, name)
-            if not isinstance(name, six.text_type):
-                name = name.decode('utf-8')
-            nname = unicodedata.normalize('NFC', name)
-            if name.startswith('.'):
-                print('Skipping dot file:', name)
-            elif name.startswith('@') or name.endswith('~'):
-                print('Skipping temporary file:', name)
-            elif name.endswith('.pyc') or name.endswith('.pyo'):
-                print('Skipping generated file:', name)
-            
-            # checks if file already exists on dbx
-            elif nname in listing:
+            nname = unicodedata.normalize('NFC', name)  # normalize for cross-platform compatibility
+
+            # skip unwanted files
+            if name.startswith('.') or name.startswith('@') or name.endswith('~'):
+                print('Skipping dot or temp file:', name)
+                continue
+            if name.endswith('.pyc') or name.endswith('.pyo'):
+                print('Skipping compiled Python file:', name)
+                continue
+
+            # if file already exists on Dropbox, compare stats
+            if nname in listing:
                 md = listing[nname]
                 mtime = os.path.getmtime(fullname)
                 mtime_dt = datetime.datetime(*time.gmtime(mtime)[:6])
                 size = os.path.getsize(fullname)
-                if (isinstance(md, dropbox.files.FileMetadata) and
-                        mtime_dt == md.client_modified and size == md.size):
+
+                # check if file has changed
+                if isinstance(md, dropbox.files.FileMetadata) and mtime_dt == md.client_modified and size == md.size:
                     print(name, 'is already synced [stats match]')
+                    continue
                 else:
-                    print(name, 'exists with different stats, downloading')
-                    res = download(dbx, folder, subfolder, name)
-                    with open(fullname) as f:
-                        data = f.read()
-                    if res == data:
-                        print(name, 'is already synced [content match]')
-                    else:
-                        print(name, 'has changed since last sync')
-                        #if yesno('Refresh %s' % name, False, args):
-                        # probably check for the correct subfolder here
+                    print(name, 'has changed, re-uploading...')
+                    upload(dbx, fullname, folder, subfolder, name, overwrite=True)
 
-                        upload(dbx, fullname, folder, subfolder, name,
-                                overwrite=True)
-            #elif yesno('Upload %s' % name, True, args):
-
-            # check also if file name matches folder name; if not, find correct folder on dbx
+            # otherwise, we need to figure out where it goes
             else:
-                if match_format(fullname):
+                if match_format(fullname):  # makes sure it follows expected naming
                     if check_folder_name(fullname):
-                        # proceed as normal if file is under its designated subfolder on desktop
+                        # correct folder already — upload directly
                         upload(dbx, fullname, folder, subfolder, name)
                     else:
-                        # otherwise, find correct folder
+                        # wrong folder — determine where it should go
                         new_subfolder = determine_dbx_subfolder(fullname)
                         listing = list_folder(dbx, folder, new_subfolder)
 
-                        # Recheck for existence in the new subfolder
+                        # check again if the file already exists there
                         if name in listing:
                             md = listing[name]
                             mtime = os.path.getmtime(fullname)
                             mtime_dt = datetime.datetime(*time.gmtime(mtime)[:6])
                             size = os.path.getsize(fullname)
-                            if (isinstance(md, dropbox.files.FileMetadata) and
-                                    mtime_dt == md.client_modified and size == md.size):
+
+                            if isinstance(md, dropbox.files.FileMetadata) and mtime_dt == md.client_modified and size == md.size:
                                 print(name, 'is already synced [stats match]')
                             else:
-                                print(name, 'exists in correct subfolder with different stats, re-uploading...')
+                                print(name, 'has changed in correct folder, re-uploading...')
                                 upload(dbx, fullname, folder, new_subfolder, name, overwrite=True)
                         else:
+                            # file doesn't exist yet — just upload
                             upload(dbx, fullname, folder, new_subfolder, name)
-
                 else:
-                    print (name, ' is unable to be uploaded because it does not match the specified naming format.')
+                    # invalid file name format — skip
+                    print(name, ' does not match naming format and was skipped.')
 
-        # Then choose which subdirectories to traverse.
+        # filter out hidden or generated directories
         keep = []
-        for name in dirs:
-            if name.startswith('.'):
-                print('Skipping dot directory:', name)
-            elif name.startswith('@') or name.endswith('~'):
-                print('Skipping temporary directory:', name)
-            elif name == '__pycache__':
-                print('Skipping generated directory:', name)
-            else:
-                print('Keeping directory:', name)
-                keep.append(name)
-            #elif yesno('Descend into %s' % name, True, args): # will maybe null this later
-            #    print('Keeping directory:', name)
-            #    keep.append(name)
-            #else:
-            #    print('OK, skipping directory:', name)
-        dirs[:] = keep
+        for dirname in dirs:
+            if dirname.startswith('.') or dirname.startswith('@') or dirname.endswith('~') or dirname == '__pycache__':
+                print('Skipping non-user directory:', dirname)
+                continue
+            print('Keeping directory:', dirname)
+            keep.append(dirname)
+        dirs[:] = keep  # in-place modification for os.walk
+
+    dbx.close()  # clean exit — releases resources
 
 
-    dbx.close() # exits program
 
 # checks to see if file matches file format
 # i'm thinking like this? Last_First123.ext
