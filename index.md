@@ -116,8 +116,18 @@ AJA Dropbox uses [Github Actions](https://docs.github.com/en/free-pro-team@lates
 * fix minor debugs
 
 ### 3/28-4/3:
-finalize framework used for GUI
-start documentation for user guide
+* finalize framework used for GUI
+* start documentation for user guide
+
+### 4/4-4/10
+* complete manural and FAQ docomentation for user guide
+* prepare for demo testing on client's computer
+GUI Feedback
+* change fixed window to resizeable window
+* larger font size (minimal 12 pt font) or add option for sizeable font
+* add gui for the link to retrieve access code
+* improve GUI UX and UI 
+
 
   
   
