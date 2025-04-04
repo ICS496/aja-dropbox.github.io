@@ -24,14 +24,14 @@ View our website application here: **TO ADD**
 ## Installation
 Before using AJA Dropbox, a few other things need to be installed beforehand.
 
-1. Make sure Python is installed on your machine. To do this, open a new Command Prompt window and type 'python', then 'Enter' to check your Python version.
-   * If already installed, the Python version number should appear. Press 'Ctrl-Z' then 'Enter' to the right of the >>> to exit from putting any more input into Python.
+1. Make sure Python is installed on your machine. To do this, open a new Command Prompt window and type `python`, then `Enter` to check your Python version.
+   * If already installed, the Python version number should appear. Press `Ctrl-Z` then `Enter` to the right of the >>> to exit from putting any more input into Python.
    * Otherwise, you will have to install Python yourself. Navigate to **Microsoft Store** from the **Start** menu, and search for Python in the apps. Install the latest version.
       * After installation, make sure Python is properly installed by repeating step 1. 
 2. There are a few packages we need to install, as well. In terminal, run these three commands separately:
-   * 'pip install dotenv'
-   * 'pip install dropbox'
-   * 'pip install PySide6'
+   * `pip install dotenv`
+   * `pip install dropbox`
+   * `pip install PySide6`
 
 
 ## User Guide
@@ -51,8 +51,6 @@ This section provides information of interest to developers wishing to use this 
 
 This application uses the [Dropbox for Python API.](https://dropbox-sdk-python.readthedocs.io/en/latest/index.html)
 
-### Installation
-**(to add)**
 
 ### Application Design
 AJA Dropbox is based upon the features our client would like to have. The main goal is to have a program that rarely needs maintenance as they possess no coding knowledge. We are developing an application that would allow the user to maintain the program script itself by creating features that will change the script when neccessary changes are needed. 
