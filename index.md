@@ -49,7 +49,7 @@ This section provides a walkthrough of how to use the AJA Dropbox user interface
 AJA Dropbox is able to be run via the command terminal, directly through Python. No IDE is necessary to run this.
 
 1. Navigate to the AJA Dropbox folder you've unzipped on your machine.
-2. Double click the folder to show its contents. Locate the file named `mvp_v1`, and right click to show more options.
+2. Double click the folder to show its contents. Locate the file named `mvp_v1.py`, and right click to show more options.
 3. Under the 'Open with' menu, there should be the option to run it in your current Python version. Click this.
 4. A blank terminal window should open, along with an app interface. In the app, follow the instructions to link your account to the app and select your local folder to pull files from, and you should be good.
 
