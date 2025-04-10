@@ -37,7 +37,7 @@ Before using AJA Dropbox, a few other things need to be installed beforehand. Th
 
 Great! AJA Dropbox needs these packages to create its GUI and access the Dropbox API. Now that we've got all the necessary things installed, we can go ahead and download AJA Dropbox itself.
 
-3. **are we just having the user download from a specified branch?** In the AJA Github page, navigate to the latest branch. (link to branch here?) Under the green code button in the top right, click `Download ZIP` to download all the files.
+3. **are we just having the user download from a specified branch?** In the AJA Github page, navigate to the [latest branch.] (https://github.com/ICS496/aja-dropbox.github.io/tree/main_app_0.4) Under the green code button in the top right, click `Download ZIP` to download all the files.
 4. After downloading, unzip the files to wherever you'd like.
 
 And you're done!
@@ -56,19 +56,17 @@ In this method, we can simply run the main app file from your IDE.
    
 #### If using command line:
 Here, we'll have to navigate to the app's folder with the terminal and run it from there.
-1. Take note of the location of your app folder. The path is usually located at the top of the File Explorer window. For example, it may be something like `Downloads\aja-dropbox.github.io-main_app_0.4\aja-dropbox.github.io-main_app_0.4`
-2. Open a new command terminal window. To the left of the cursor, it should read something like `C:\Users\(Your Username Here)`. This is the current directory.
+**For Windows:**
+1. Take note of the location of your app folder. The path is usually located at the top of the File Explorer window. For example, it may be something like `Downloads\aja-dropbox.github.io-main_app_0.4\aja-dropbox.github.io-main_app_0.4`. Keep this File Explorer window open for reference.
+2. Open a new command terminal window. To the left of the cursor, it should read something like `C:\Users\(Your Username Here)`. This is the current directory/path.
 3. We need to navigate to the AJA Dropbox folder we installed. To do this, we're going to be using two commands:
   * `cd`: navigates to a specified folder
   * `dir`: lists the contents of a specified folder
+In the terminal, type `cd FolderName` then enter to go to that folder. For example, `cd Downloads` navigates to the Downloads folder. You should see that reflected in the current path listed on the left.
+4. Keep using `cd` to navigate to the AJA Dropbox folder. If you're unsure as to what content is inside the folder, type `dir` then enter to see a list of all items. If you've messed up and went to the wrong subfolder, use `cd ../` to move back a directory.
+5. Finally, now that we've reached the Aja Dropbox Folder, we're going to want to run the program. In the terminal, type `python mvp_v1.py` to run the program.
 
-(TO ADD)
-
-
-### Landing Page
-The landing page is presented to users when they visit the top-level URL to the site. It provides our motto and some previews of our application.
-
-*We intend to enhance the UI design over the course of our project.*
+* From here, regardless of the method used to run the program, an app window will appear. Follow the instructions to link your account to the app and select your local folder to pull files from, and you should be good.
 
 ### Usage Notes
 * Individual file upload limit is **150 MB**.
@@ -79,7 +77,6 @@ The landing page is presented to users when they visit the top-level URL to the 
 This section provides information of interest to developers wishing to use this code base as a basis for their own development tasks.
 
 This application uses the [Dropbox for Python API.](https://dropbox-sdk-python.readthedocs.io/en/latest/index.html)
-
 
 ### Application Design
 AJA Dropbox is based upon the features our client would like to have. The main goal is to have a program that rarely needs maintenance as they possess no coding knowledge. We are developing an application that would allow the user to maintain the program script itself by creating features that will change the script when neccessary changes are needed. 
@@ -98,9 +95,6 @@ The development process for AJA Dropbox conformed to [Issue Driven Project Manag
 * When a task is complete, its corresponding issue is closed and its corresponding git branch is merged into master.
 * The state (todo, in progress, complete) of each task for a milestone is managed using a GitHub Project Board.
 
-## Continuous Integration
-AJA Dropbox uses [Github Actions](https://docs.github.com/en/free-pro-team@latest/actions) to automatically run ESLint and TestCafe each time a commit is made to the default branch.  You can see the results of all recent "workflows" at [https://github.com/kalo-stems/kalo-stems.github.io/actions](https://github.com/kalo-stems/kalo-stems.github.io/actions).
-
 ## Links
 * [GitHub Organization](https://github.com/ICS496/aja-dropbox.github.io)
 
@@ -109,6 +103,7 @@ AJA Dropbox uses [Github Actions](https://docs.github.com/en/free-pro-team@lates
     * compares stats of file on local machine and in dropbox cloud, only re-uploads if metadata is changed
     * currently mirrors local directory's hierarchy when uploading
 * OAuth account verification
+* GUI interface using PyQt
 
 ## Project Milestones
 
@@ -166,8 +161,6 @@ GUI Feedback
 * add gui for the link to retrieve access code
 * improve GUI UX and UI 
 
-
-  
   
 ## Team
 AJA Dropbox Tool is designed and implemented by [Aaron Ancheta](https://aaron-ancheta.github.io/), [Adrienne Kaneshiro](https://amkanesh.github.io/), and [Jaira Pader](https://jairabp.github.io/).
