@@ -40,7 +40,7 @@ Great! AJA Dropbox needs these packages to create its GUI and access the Dropbox
 3. **are we just having the user download from a specified branch?** In the AJA Github page, navigate to the [latest branch.](https://github.com/ICS496/aja-dropbox.github.io/tree/main_app_0.4) Under the green code button in the top right, click `Download ZIP` to download all the files.
 4. After downloading, unzip the files to wherever you'd like.
 
-And you're done!
+Installation done! Move on to the **User Guide** for more information on how to run the app.
 
 ## User Guide
 This section provides a walkthrough of how to use the AJA Dropbox user interface and its capabilities.
