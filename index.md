@@ -46,31 +46,16 @@ Installation done! Move on to the **User Guide** for more information on how to 
 This section provides a walkthrough of how to use the AJA Dropbox user interface and its capabilities.
 
 ### How to Run the App
-AJA Dropbox is able to be run via the command terminal or through an IDE (a code editor, like VSCode).
+AJA Dropbox is able to be run via the command terminal, directly through Python. No IDE is necessary to run this.
 
-#### If using a code editor:
-In this method, we can simply run the main app file from your IDE.
 1. Navigate to the AJA Dropbox folder you've unzipped on your machine.
-2. Double click the folder to show its contents. Open the file named `mvp_v1`. If you have an IDE installed, it should automatically open in the IDE.
-3. Locate the **Run** button to run the program.
-   
-#### If using command line:
-Here, we'll have to navigate to the app's folder with the terminal and run it from there.
-**For Windows:**
-1. Take note of the location of your app folder. The path is usually located at the top of the File Explorer window. For example, it may be something like `Downloads\aja-dropbox.github.io-main_app_0.4\aja-dropbox.github.io-main_app_0.4`. Keep this File Explorer window open for reference.
-2. Open a new command terminal window. To the left of the cursor, it should read something like `C:\Users\(Your Username Here)`. This is the current directory/path.
-3. We need to navigate to the AJA Dropbox folder we installed. To do this, we're going to be using two commands:
-  * `cd`: navigates to a specified folder
-  * `dir`: lists the contents of a specified folder
-In the terminal, type `cd FolderName` then enter to go to that folder. For example, `cd Downloads` navigates to the Downloads folder. You should see that reflected in the current path listed on the left.
-4. Keep using `cd` to navigate to the AJA Dropbox folder. If you're unsure as to what content is inside the folder, type `dir` then enter to see a list of all items. If you've messed up and went to the wrong subfolder, use `cd ../` to move back a directory.
-5. Finally, now that we've reached the Aja Dropbox Folder, we're going to want to run the program. In the terminal, type `python mvp_v1.py` to run the program.
-
-* From here, regardless of the method used to run the program, an app window will appear. Follow the instructions to link your account to the app and select your local folder to pull files from, and you should be good.
+2. Double click the folder to show its contents. Locate the file named `mvp_v1`, and right click to show more options.
+3. Under the 'Open with' menu, there should be the option to run it in your current Python version. Click this.
+4. A blank terminal window should open, along with an app interface. In the app, follow the instructions to link your account to the app and select your local folder to pull files from, and you should be good.
 
 ### Usage Notes
 * Individual file upload limit is **150 MB**.
-* Application can move misplaced files to their correct Dropbox folders (for example, misplacing Smith_Amanda-document.txt in folder Lee_Bruce) and create new folders if necessary--HOWEVER, new folders do not have sharing permissions. User needs to manually give the intended recipent access to the newly created folder on Dropbox.
+* The application can move misplaced files to their correct Dropbox folders (for example, misplacing Smith_Amanda-document.txt in folder Lee_Bruce) and create new folders if necessary--HOWEVER, new folders created through the app do not have sharing permissions. User needs to manually give the intended recipent access to the newly created folder on Dropbox.
 * Application will also overwrite files of the same name if they're already present in the target Dropbox folder or subfolders within that folder.
 
 ## Developer Guide
