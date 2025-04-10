@@ -24,7 +24,7 @@ View our website application here: **TO ADD**
 ## Installation
 Before using AJA Dropbox, a few other things need to be installed beforehand. These instructions are specific to Windows machines... for now (will update with mac too maybe?)
 
-1. Make sure Python is installed on your machine. To do this, open a new Command Prompt window and type `python`, then `Enter` to check your Python version.
+1. Make sure Python is installed on your machine. To do this, open a new Command Prompt window and type `python`, then enter to check your Python version.
    * If already installed, the Python version number should appear. Press `Ctrl-Z` then `Enter` to the right of the >>> to exit from putting any more input into Python.
    * Otherwise, you will have to install Python yourself.
       * **For Windows:** Navigate to **Microsoft Store** from the **Start** menu, and search for Python in the apps. Install the latest version.
