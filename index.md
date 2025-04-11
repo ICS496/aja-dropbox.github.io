@@ -56,6 +56,7 @@ AJA Dropbox is able to be run via the command terminal, directly through Python.
 #### Naming Conventions
 * Files to be uploaded to the Dropbox must follow this specified naming format: `Lastname_Firstname-Documentname.extension`
 * example: `Smith_Amanda-document.pdf`
+* AJA Dropbox will NOT upload any files that do not follow this naming convention.
 
 ### Usage Notes
 * Individual file upload limit is **150 MB**.
