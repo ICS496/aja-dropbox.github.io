@@ -53,6 +53,10 @@ AJA Dropbox is able to be run via the command terminal, directly through Python.
 3. Under the 'Open with' menu, there should be the option to run it in your current Python version. Click this.
 4. A blank terminal window should open, along with an app interface. In the app, follow the instructions to link your account to the app and select your local folder to pull files from, and you should be good.
 
+#### Naming Conventions
+* Files to be uploaded to the Dropbox must follow this specified naming format: `Lastname_Firstname-Documentname.extension`
+* example: `Smith_Amanda-document.pdf`
+
 ### Usage Notes
 * Individual file upload limit is **150 MB**.
 * The application can move misplaced files to their correct Dropbox folders (for example, misplacing Smith_Amanda-document.txt in folder Lee_Bruce) and create new folders if necessary--HOWEVER, new folders created through the app do not have sharing permissions. User needs to manually give the intended recipent access to the newly created folder on Dropbox.
