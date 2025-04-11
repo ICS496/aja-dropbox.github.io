@@ -37,7 +37,7 @@ Before using AJA Dropbox, a few other things need to be installed beforehand. Th
 
 Great! AJA Dropbox needs these packages to create its GUI and access the Dropbox API. Now that we've got all the necessary things installed, we can go ahead and download AJA Dropbox itself.
 
-3. **are we just having the user download from a specified branch?** In the AJA Github page, navigate to the [latest branch.](https://github.com/ICS496/aja-dropbox.github.io/tree/main_app_0.4) Under the green code button in the top right, click `Download ZIP` to download all the files.
+3. **are we just having the user download from a specified branch?** In the AJA Github page, navigate to the [latest branch.](https://github.com/ICS496/aja-dropbox.github.io/tree/main_app_0.5) Under the green code button in the top right, click `Download ZIP` to download all the files.
 4. After downloading, unzip the files to wherever you'd like.
 
 Installation done! Move on to the **User Guide** for more information on how to run the app.
