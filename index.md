@@ -1,7 +1,6 @@
 ## Table of contents
 
 * [Overview](#overview)
-* [Deployment](#deployment)
 * [Installation](#installation)
 * [User Guide](#user-guide)
 * [Developer Guide](#developer-guide)
@@ -15,29 +14,27 @@ This script automates synchronizing files from a local directory to numerous Dro
 
 * [Qt for Python/PySide](https://wiki.qt.io/Qt_for_Python) for GUI capabilities
 
-## Deployment
-View our website application here: **TO ADD**
-
 ## Activity Badges
 [![ci-AJA_Dropbox](https://github.com/kalo-stems/kalo-kode/actions/workflows/ci.yml/badge.svg)](https://github.com/kalo-stems/kalo-kode/actions/workflows/ci.yml)
 
 ## Installation
-Before using AJA Dropbox, a few other things need to be installed beforehand. These instructions are specific to Windows machines... for now (will update with mac too maybe?)
+Before using AJA Dropbox, a few other things need to be installed beforehand. These instructions are specific to Windows machines.
+**Note:** The terms "command prompt," "command window," and "terminal" are used interchangeably to refer to the Windows Command Prompt application.
 
-1. Make sure Python is installed on your machine. To do this, open a new Command Prompt window and type `python`, then enter to check your Python version.
-   * If already installed, the Python version number should appear. Press `Ctrl-Z` then enter to the right of the >>> to exit from putting any more input into Python.
+1. Make sure Python is installed on your machine. To do this, open a new Command Prompt window. Open the Windows Start Menu and search for **Command Prompt**, and open the window. It should be a black screen. Your current directory is listed, looking something like `C:\Users\YourUsername`.
+2.  In the app, to the right of the `C:\Users\YourUsername`, type `python`, then enter to check your Python version.
+   * If already installed, the Python version number should appear. Press `Ctrl-Z` then enter to the right of the `>>>` to exit from putting any more input into Python.
    * Otherwise, you will have to install Python yourself.
       * **For Windows:** Navigate to **Microsoft Store** from the **Start** menu, and search for Python in the apps. Install the latest version.
-      * **For mac:** (TO ADD)
       * After installation, make sure Python is properly installed by repeating step 1. 
-2. There are a few packages we need to install, as well. In terminal, run these three commands separately:
+3. There are a few packages we need to install, as well. In terminal, run these three commands separately:
    * `pip install dotenv`
    * `pip install dropbox`
    * `pip install PySide6`
 
 Great! AJA Dropbox needs these packages to create its GUI and access the Dropbox API. Now that we've got all the necessary things installed, we can go ahead and download AJA Dropbox itself.
 
-3. **are we just having the user download from a specified branch?** In the AJA Github page, navigate to the [latest branch.](https://github.com/ICS496/aja-dropbox.github.io/tree/main_app_0.5) Under the green code button in the top right, click `Download ZIP` to download all the files.
+3. In the AJA Github page, navigate to the [latest branch.](https://github.com/ICS496/aja-dropbox.github.io/tree/main_app_0.5) Under the green code button in the top right, click `Download ZIP` to download all the files.
 4. After downloading, unzip the files to wherever you'd like.
 
 Installation done! Move on to the **User Guide** for more information on how to run the app.
