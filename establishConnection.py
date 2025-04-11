@@ -7,12 +7,6 @@ import sys
 
 load_dotenv()
 
-# so i can't use env for some reason lol :')
-#print("app key: " + str(os.getenv("APP_KEY")))
-
-# APP_KEY="ydmdhfykvloacju"
-# APP_SECRET="2b15duy2govppcs"
-
 APP_KEY = os.getenv("APP_KEY")
 APP_SECRET = os.getenv("APP_SECRET")
 
@@ -48,4 +42,3 @@ def oauth():
     print("Authorization successful. Scopes granted:", oauth_result.scope)
 
     return dbx
-
