@@ -91,60 +91,7 @@ The development process for AJA Dropbox conformed to [Issue Driven Project Manag
 * GUI interface using PyQt
 
 ## Project Milestones
-
-### 1/23:
-* initial meeting with sponsors
-
-### 1/24-1/30:
-* discussed scope of project
-* set up Github page
-* looked into dropbox file upload automating
-* created rough pitch (outline) for sponsors
-
-### 1/31-2/6:
-* finalized project scope
-* continued editing Github page
-* read Dropbox API docs
-* request Enterprise Dropbox Access (denied)
-* create (trial) business Dropbox account
-
-### 2/7-2/13:
-* created Github website, aka this current page!
-* continued reading Dropbox API docs (differences between regular and enterprise/business API?)
-* started [Dropbox tutorial for Python](https://www.dropbox.com/developers/documentation/python#tutorial), installed dropbox package for Python, generated access token (will need to update to [standard OAuth flow](https://developers.dropbox.com/oauth-guide) in the future, however)
-* created Dropbox Testing App, unfortunately not possible to add other devs so only owned/managed by a single person
-
-### 2/14-2/20:
-* timeline chart for sponsor (usable demo by 3/7)
-* setup dropbox for individual environments
-* implemented file uploading to dropbox from desktop
-* research account authentication (i.e. how dropbox gets access to an account via oauth)
-
-### 2/21-2/27:
-* looked into how others can access Dropbox app
-* looked into OAuth implementation (app_key, app_secret)
-* work on functionality to upload people's files into their corresponding named folders (as of this week it just mirrors your local directory's hierarchy)
-
-### 2/28-3/6:
-* work on Dropbox folder uploading
-* combined OAuth and file upload functionality
-
-### 3/7-3/13:
-* demo reveal
-* fix minor debugs
-
-### 3/28-4/3:
-* finalize framework used for GUI
-* start documentation for user guide
-
-### 4/4-4/10
-* complete manural and FAQ docomentation for user guide
-* prepare for demo testing on client's computer
-GUI Feedback
-* change fixed window to resizeable window
-* larger font size (minimal 12 pt font) or add option for sizeable font
-* add gui for the link to retrieve access code
-* improve GUI UX and UI 
+* [Document for Project Milestones](https://docs.google.com/document/d/1C_hqmui0HNR1qMXpn6Xv6I94yqdIzfGoaImK_YHulBg/edit?usp=sharing)
 
   
 ## Team
