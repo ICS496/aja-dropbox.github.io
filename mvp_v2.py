@@ -2,8 +2,8 @@ import sys
 from PySide6.QtWidgets import (QApplication, QWidget, QLabel, QPushButton, QVBoxLayout,
                                QFileDialog, QLineEdit, QMessageBox)
 from PySide6.QtGui import QFont
-from uploader import run_sync
-from establishConnection import connect_to_dropbox
+from uploader_v2 import run_sync
+from establish_connection import connect_to_dropbox
 
 # Main window class for the Dropbox sync app
 class DropboxSyncApp(QWidget):

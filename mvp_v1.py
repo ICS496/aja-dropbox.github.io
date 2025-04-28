@@ -3,7 +3,7 @@ from PySide6.QtWidgets import (
     QApplication, QWidget, QLabel, QPushButton, QVBoxLayout,
     QFileDialog, QLineEdit, QMessageBox
 )
-from uploader import run_sync  # imports our logic from uploader.py
+from uploader_v2 import run_sync  # imports our logic from uploader.py
 
 # GUI class for our Dropbox sync app
 class DropboxSyncApp(QWidget):

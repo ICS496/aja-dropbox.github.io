@@ -107,25 +107,6 @@ def upload(dbx, fullname, folder, subfolder, name, overwrite=False):
     print(f"Uploaded as: {name}")
     return True
 
-# Checks to see if file matches the required naming format (Last_First-type.ext)
-# numbers optional, it’s just if there's a duplicate
-def match_format(filepath):
-    # do some cutting so we just get the filename without the path
-    filename = os.path.basename(filepath)
-    if filename.count('.') > 1:
-        return False
-    filename = filename.split('.')[0]
-    r = re.compile(".*_.*-.*")  # any string, underscore, then any string, then a dash, then any string
-    return bool(r.match(filename))
-
-# Checks if the file's name matches its folder name (i.e., folder name == Last_First from file)
-def check_folder_name(fullname):
-    temp = fullname.replace("/", "\\").split("\\")
-    filename = temp[-1]
-    folder = temp[-2]
-    fileowner = filename.split("-")[0]
-    return fileowner.lower() == folder.lower()
-
 # Gets the correct Dropbox subfolder name from the filename
 # upload function already deals with making a new folder so it's just a matter of changing the subfolder name
 def determine_dbx_subfolder(fullname):
@@ -147,3 +128,22 @@ def list_folder(dbx, folder, subfolder):
         print(f"Folder listing failed for {path} -- assumed empty: {err}")
         return {}
     return {entry.name: entry for entry in res.entries}
+
+# Checks to see if file matches the required naming format (Last_First-type.ext)
+# numbers optional, it’s just if there's a duplicate
+def match_format(filepath):
+    # do some cutting so we just get the filename without the path
+    filename = os.path.basename(filepath)
+    if filename.count('.') > 1:
+        return False
+    filename = filename.split('.')[0]
+    r = re.compile(".*_.*-.*")  # any string, underscore, then any string, then a dash, then any string
+    return bool(r.match(filename))
+
+# Checks if the file's name matches its folder name (i.e., folder name == Last_First from file)
+def check_folder_name(fullname):
+    temp = fullname.replace("/", "\\").split("\\")
+    filename = temp[-1]
+    folder = temp[-2]
+    fileowner = filename.split("-")[0]
+    return fileowner.lower() == folder.lower()
