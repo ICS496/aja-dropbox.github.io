@@ -1,4 +1,13 @@
-./mvp_v1.py
-./mvp_v2.py
-./main.py
-./uploader.py
+__pycache__
+
+.vscode
+
+.env
+
+mvp_v1.py
+
+mvp_v2.py
+
+main.py
+
+uploader.py
